@@ -11,8 +11,8 @@ const bubbleSort = (array) => {
   let temp;
 
   while (changed) {
-    for (let i = 0; i < array.length - 2; i++) {
-      for (let j = i + 1; j < array.length - 1; j++) {
+    for (let i = 0; i < array.length - 1; i++) {
+      for (let j = i + 1; j < array.length; j++) {
         changed = false;
 
         if (array[i] > array[j]) {
