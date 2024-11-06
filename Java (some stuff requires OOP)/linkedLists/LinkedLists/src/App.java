@@ -8,34 +8,32 @@ public class App {
         Node nodeE = new Node(4);
         Node nodeF = new Node(5);
 
-        nodeA.next = nodeB;
-        nodeB.next = nodeC;
-        nodeC.next = nodeD;
-        nodeD.next = nodeE;
-        nodeE.next = nodeF;
+        addNode(nodeA, nodeB);
+        addNode(nodeA, nodeC);
+        addNode(nodeA, nodeD);
+        addNode(nodeA, nodeE);
+        addNode(nodeA, nodeF);
 
-        nodeB.prev = nodeA;
-        nodeC.prev = nodeB;
-        nodeD.prev = nodeC;
-        nodeE.prev = nodeD;
-        nodeF.prev = nodeE;
-
-        System.out.println("Linked List size before addition:\n" + countNodes(nodeA) + "\n");
+        System.out.println("Linked List size before addition:\n" + countNodes(nodeA) + " indexes" + "\n");
 
         Node nodeG = new Node(6);
 
         System.out.println("Adding one extra node:");
         Node current = nodeA;
         for (int i = 0; i < countNodes(nodeA); i++) {
-            System.out.print(current.data + (current.next != null ? ", " : " "));
+            System.out.print(current.data + (current.next != null ? ", " : (" -----> " + nodeG.data + "\n")));
             current = current.next;
         }
 
-        System.out.println("\n\nLinked List size after addtion:");
         addNode(nodeA, nodeG);
 
-        System.out.println(countNodes(nodeA));
+        current = nodeA;
+        for (int i = 0; i < countNodes(nodeA); i++) {
+            System.out.print(current.data + (current.next != null ? ", " : (" <----- " + "\n")));
+            current = current.next;
+        }
 
+        System.out.println("\nLinked List size after addition:\n" + countNodes(nodeA) + " indexes" + "\n");
         System.out.println("\nAnd here are all the previous node for each node in reverse:");
         current = getLastNode(nodeA);
         for (int i = countNodes(nodeA); i > 0; i--) {
