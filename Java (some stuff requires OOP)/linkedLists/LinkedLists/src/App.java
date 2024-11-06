@@ -26,10 +26,15 @@ public class App {
         }
 
         System.out.println("\n\nLinked List size after addtion:");
-
         addNode(nodeA, nodeG);
 
         System.out.println(countNodes(nodeA));
+
+        current = nodeA;
+        for (int i = 0; i < countNodes(nodeA); i++) {
+            System.out.print(current.data + (current.next != null ? ", " : " "));
+            current = current.next;
+        }
 
     }
 
@@ -55,4 +60,5 @@ public class App {
 
         current.next = newNode;
     }
+
 }
