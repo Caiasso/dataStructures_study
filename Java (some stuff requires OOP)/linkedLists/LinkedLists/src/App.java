@@ -14,6 +14,12 @@ public class App {
         nodeD.next = nodeE;
         nodeE.next = nodeF;
 
+        nodeB.prev = nodeA;
+        nodeC.prev = nodeB;
+        nodeD.prev = nodeC;
+        nodeE.prev = nodeD;
+        nodeF.prev = nodeE;
+
         System.out.println("Linked List size before addition:\n" + countNodes(nodeA) + "\n");
 
         Node nodeG = new Node(6);
@@ -30,10 +36,12 @@ public class App {
 
         System.out.println(countNodes(nodeA));
 
-        current = nodeA;
-        for (int i = 0; i < countNodes(nodeA); i++) {
-            System.out.print(current.data + (current.next != null ? ", " : " "));
-            current = current.next;
+        System.out.println("\nAnd here are all the previous node for each node in reverse:");
+        current = getLastNode(nodeA);
+        for (int i = countNodes(nodeA); i > 0; i--) {
+            System.out.print((current.prev != null ? current.prev.data : "initial node")
+                    + (current.prev != null ? ", " : " "));
+            current = current.prev;
         }
 
     }
@@ -59,6 +67,17 @@ public class App {
         }
 
         current.next = newNode;
+        newNode.prev = current;
+    }
+
+    public static Node getLastNode(Node head) {
+        Node current = head;
+
+        for (int i = 0; i < countNodes(head) - 1; i++) {
+            current = current.next;
+        }
+
+        return current;
     }
 
 }
